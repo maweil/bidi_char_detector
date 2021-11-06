@@ -1,0 +1,7 @@
+# Configuration file for bidi_detector
+[general]
+includes = [ "**/*.rs", "*.patch" ]
+excludes = [ "src/main.rs" ]
+
+[display]
+show_description = true

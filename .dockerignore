@@ -1,0 +1,5 @@
+target/
+secrets/
+Dockerfile
+*.patch
+.git/
