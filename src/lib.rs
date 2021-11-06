@@ -102,9 +102,40 @@ pub fn check_for_bidi_chars(test: &str) -> BIDICheckResult {
 
 #[cfg(test)]
 mod tests {
+    use std::cmp::PartialEq;
+    use std::fmt;
+    use std::fmt::Debug;
+    impl PartialEq for BIDICharOccurence {
+        fn eq(&self, other: &BIDICharOccurence) -> bool {
+            self.char_pos == other.char_pos
+                && self.line == other.line
+                && self.found_char == other.found_char
+        }
+    }
+
+    impl Debug for BIDICharOccurence {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            f.debug_tuple("")
+                .field(&self.line)
+                .field(&self.char_pos)
+                .field(&self.found_char)
+                .finish()
+        }
+    }
+    use crate::{check_for_bidi_chars, BIDICharOccurence};
+    use std::fs;
     #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
+    fn check_example_js() {
+        const EXAMPLE_FILE: &str = "test/example-commenting-out.js";
+        let check_result = check_for_bidi_chars(&fs::read_to_string(EXAMPLE_FILE).unwrap());
+        assert_eq!(check_result.occurences.len(), 6);
+        assert_eq!(
+            check_result.occurences.get(0).unwrap(),
+            &BIDICharOccurence {
+                char_pos: 3,
+                line: 4,
+                found_char: '\u{202e}'
+            }
+        )
     }
 }
