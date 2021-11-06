@@ -1,7 +1,15 @@
-# Configuration file for bidi_detector
 [general]
-includes = [ "**/*.rs", "*.patch" ]
-excludes = [ "src/main.rs" ]
+includes = [ 
+    "src/",
+    "**/*.patch",
+    "**/*.json",
+    "**/Dockerfile",
+    "test/*.js"
+]
+excludes = [
+    ".git/*",
+    "target/*"
+]
 
 [display]
-show_description = true
+show_details = true
