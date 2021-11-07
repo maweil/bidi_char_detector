@@ -1,6 +1,6 @@
 [general]
 includes = [ 
-    "src/",
+    "src/*/**",
     "**/*.patch",
     "**/*.json",
     "**/Dockerfile",
