@@ -102,7 +102,7 @@ fn main() {
     let bidi_chars_found_overall = check_files(&config);
     if bidi_chars_found_overall > 0 {
         eprintln!(
-            "Found {} potentially dangerous Unicode BIDI Characters!",
+            "Found {} potentially dangerous Unicode BIDI characters!",
             bidi_chars_found_overall
         );
         exit(1)
