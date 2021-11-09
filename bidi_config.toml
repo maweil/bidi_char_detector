@@ -1,6 +1,6 @@
 [general]
 includes = [ 
-    "src/*/**",
+    "**/*.rs",
     "**/*.patch",
     "**/*.json",
     "**/Dockerfile",
@@ -13,3 +13,5 @@ excludes = [
 
 [display]
 show_details = true
+verbose = true
+ignore_invalid_data = false
