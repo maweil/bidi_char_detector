@@ -6,7 +6,7 @@ For an explanation of the attack, have a look at [GitHub's blog entry](https://g
 
 ## Installation
 This package is mostly intended to be used via it's docker container. But local installation is possible of course.
-Compilation requires at least Rust 1.56.0.
+Compilation requires at least Rust 1.56.0 because it uses the Rust 2021 Edition.
 Clone this repository and run `cargo install --path .` to install the binary for your current user. After that, you can invoke the `bidi_detector` command.
 
 
@@ -78,9 +78,15 @@ show_details = true
 ```
 
 #### Display Settings
-If you enable the option `show_details`, the BIDI characters found in the respective files will be listed explicitly in addition to just the number of occurences found.
+The following settings are available in this section:
 
-**Example:** `show_details = true`
+| Setting               | Description                                                                                                 | Optional | Default | Introduced in |
+| --------------------- | ----------------------------------------------------------------------------------------------------------- | -------- | ------- | ------------- |
+| `show_details`        | Decides whether to print out line/pos and type of the detected BIDI character if found (see examples below) | No       | -       | v0.1.1        |
+| `ignore_invalid_data` | Whether to print an error message when binary/non-UTF8 files are detected                                   | Yes      | true    | v0.1.2        |
+| `verbose`             | Whether to print the filename even if no suspicious characters were found                                   | Yes      | true    | v0.1.2        |
+
+**Example:** `show_details = true`, `verbose = true`
 
 ```txt
 src/lib.rs - 0 BIDI characters
@@ -95,11 +101,17 @@ Found character LRI (Left-to-Right Isolate), test/example-commenting-out.js:6:24
 Found 6 potentially dangerous Unicode BIDI characters!
 ```
 
-**Example:** `show_details = false`
+**Example:** `show_details = false`, `verbose = true`
 
 ```txt
 src/lib.rs - 0 BIDI characters
 src/main.rs - 0 BIDI characters
+test/example-commenting-out.js - 6 BIDI characters
+Found 6 potentially dangerous Unicode BIDI characters!
+```
+
+**Example:** `show_details = false`, `verbose = false`
+```txt
 test/example-commenting-out.js - 6 BIDI characters
 Found 6 potentially dangerous Unicode BIDI characters!
 ```

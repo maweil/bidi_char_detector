@@ -12,6 +12,6 @@ excludes = [
 ]
 
 [display]
-show_details = true
-verbose = true
-ignore_invalid_data = false
+show_details = false
+verbose = false
+ignore_invalid_data = true
