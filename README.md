@@ -1,6 +1,6 @@
 # BIDI Character Detector
 This tool checks your files for existence of Unicode BIDI characters which can be misused for supply chain attacks to mitigate [CVE-2021-42574](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42574).
-This tool was written in Rust and is distributes as an (< 3MB) docker compatible container to allow fast and easy usage.
+This tool was written in Rust and is distributed as a small (< 3MB) docker compatible container to allow fast and easy usage.
 
 For an explanation of the attack, have a look at [GitHub's blog entry](https://github.blog/changelog/2021-10-31-warning-about-bidirectional-unicode-text/) or the [original paper where the attack was published](https://trojansource.codes/).
 
